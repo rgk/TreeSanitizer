@@ -116,7 +116,7 @@ test('Extending the filter.', (t) => {
   t.end();
 });
 
-test('Extending the filter.', (t) => {
+test('Input can not be nested arrays.', (t) => {
   let data = [[[]]][[]];
 
   t.deepEqual(
