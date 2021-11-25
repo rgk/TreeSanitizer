@@ -79,7 +79,7 @@ test('A deep nested tree can be sanitized.', (t) => {
   t.end();
 });
 
-test('Extending the filter.', (t) => {
+test('Extending filter.', (t) => {
   let data = {
     a: {
       b: {
@@ -139,6 +139,29 @@ test('Ignore certain keys.', (t) => {
 
   t.deepEqual(
     new TreeSanitizer(data).run(),
+    {}
+  );
+
+  t.end();
+});
+
+test('Extending ignore.', (t) => {
+  let data = {
+    a: {
+      $b: {
+        username: 'thisisausername',
+        password: 'thisisapassword'
+      }
+    }
+  }
+
+  class newTreeData extends TreeSanitizer {
+    ignore(key) {
+      return key.startsWith('$');;
+    }
+  }
+  t.deepEqual(
+    new newTreeData(data).run(),
     {}
   );
 
