@@ -127,5 +127,20 @@ test('Input can not be nested arrays.', (t) => {
   t.end();
 });
 
-console.log('test ran');
+test('Ignore certain keys.', (t) => {
+  let data = {
+    a: {
+      _b: {
+        username: 'thisisausername',
+        password: 'thisisapassword'
+      }
+    }
+  }
 
+  t.deepEqual(
+    new TreeSanitizer(data).run(),
+    {}
+  );
+
+  t.end();
+});
