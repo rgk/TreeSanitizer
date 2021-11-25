@@ -1,7 +1,7 @@
 import test from 'tape';
 import TreeSanitizer from '../TreeSanitizer.js';
 
-test('Keys with objects that are filter points.', (t) => {
+test('Keys that are filter values should not be filtered.', (t) => {
   let data = {
     a: {
       password: {
@@ -28,7 +28,7 @@ test('Keys with objects that are filter points.', (t) => {
   t.end();
 });
 
-test('Converts vales that are arrays into incrementing object properties.', (t) => {
+test('Convert values that are arrays into incrementing object properties.', (t) => {
   let data = {
     a: {
       b: {
