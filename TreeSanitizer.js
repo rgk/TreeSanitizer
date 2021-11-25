@@ -6,6 +6,8 @@ export default class TreeSanitizer {
   run(data = this.original, newTree = {}, parents = []) {
     if (typeof data !== 'object') return;
     for (const [key, value] of Object.entries(data)) {
+      if (this.ignore(key)) continue;
+
       if (typeof value === 'object') {
         parents.push(key);
         newTree = this.run(value, newTree, parents);
@@ -24,6 +26,11 @@ export default class TreeSanitizer {
     }
 
     return newTree;
+  }
+
+  // Extend ignoring keys, this is the default by example.
+  ignore(key) {
+    return key.startsWith('_');
   }
 
   // Extend and customize the filter, this is the default by example.
