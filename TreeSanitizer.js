@@ -32,12 +32,12 @@ export default class TreeSanitizer {
     return newTree;
   }
 
-  // Extend ignoring keys, this is the default by example.
+  // Extend ignoring keys, must return TRUE to ignore, this is the default by example.
   ignore(key) {
     return key.startsWith('_');
   }
 
-  // Extend and customize the filter, this is the default by example.
+  // Extend filtering, must return expected value, this is the default by example.
   filter(key, value) {
     switch(key) {
       case 'password':
