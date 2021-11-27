@@ -1,6 +1,7 @@
 export default class TreeSanitizer {
   constructor(tree) {
     this.original = tree;
+    this.sanitized = {};
   }
 
   run(data = this.original, newTree = {}, parents = []) {
@@ -9,9 +10,7 @@ export default class TreeSanitizer {
       if (this.ignore(key)) continue;
 
       if (typeof value === 'object') {
-        parents.push(key);
-        newTree = this.run(value, newTree, parents);
-        parents.pop();
+        newTree = this.run(value, newTree, [ ...parents, key ]);
         continue;
       }
 
@@ -23,6 +22,11 @@ export default class TreeSanitizer {
       }
 
       newTree = this.mergeTree(newTree, branch);
+    }
+
+    if (!parents.length) {
+      this.original = data;
+      this.sanitized = newTree;
     }
 
     return newTree;
@@ -47,7 +51,7 @@ export default class TreeSanitizer {
   mergeProperties(mainTree, branchTree, key) {
     if (branchTree === undefined || branchTree[key] === undefined) {
       return mainTree[key];
-    } else if (typeof(mainTree[key]) === "object") {
+    } else if (typeof mainTree[key] === "object") {
       return this.mergeTree(branchTree[key], mainTree[key]);
     }
 
