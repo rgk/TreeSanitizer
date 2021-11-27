@@ -42,7 +42,7 @@ test('Convert values that are arrays into incrementing object properties.', (t) 
     a: {
       b: {
         data: {
-          0: 'data', 1: 'in', 2: 'this'
+          0: 'data', 1: 'in', 2: 'password'
         },
         password: '*password*'
       }
