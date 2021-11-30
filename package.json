@@ -4,9 +4,11 @@
   "description": "A sanitizer for nested trees.",
   "main": "TreeSanitizer.js",
   "scripts": {
-    "test": "node ./tests/core.js"
+    "test-core": "node ./tests/core.js",
+    "test-edge": "node ./tests/edge.js"
   },
   "author": "rgk",
+  "homepage": "https://github.com/rgk/TreeSanitizer",
   "license": "BSD-3-Clause",
   "type": "module",
   "devDependencies": {
