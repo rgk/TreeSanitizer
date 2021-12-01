@@ -35,7 +35,7 @@ test('A deep nested tree can be sanitized.', (t) => {
       username: 'thisisausername4',
       password: 'thisisapassword4'
     }
-  }
+  };
 
   let result = {
     x: {
@@ -70,7 +70,8 @@ test('A deep nested tree can be sanitized.', (t) => {
       username: 'thisisausername4',
       password: '*password*'
     }
-  }
+  };
+
   t.deepEqual(
     new TreeSanitizer(data).run(),
     result
@@ -96,7 +97,7 @@ test('Extending filter.', (t) => {
         password: '*password***'
       }
     }
-  }
+  };
 
   class newTreeData extends TreeSanitizer {
     filter(key, value) {
@@ -107,7 +108,8 @@ test('Extending filter.', (t) => {
       }
       return value;
     }
-  }
+  };
+
   t.deepEqual(
     new newTreeData(data).run(),
     result
@@ -135,7 +137,7 @@ test('Ignore certain keys.', (t) => {
         password: 'thisisapassword'
       }
     }
-  }
+  };
 
   t.deepEqual(
     new TreeSanitizer(data).run(),
@@ -153,13 +155,14 @@ test('Extending ignore.', (t) => {
         password: 'thisisapassword'
       }
     }
-  }
+  };
 
   class newTreeData extends TreeSanitizer {
     ignore(key) {
-      return key.startsWith('$');;
+      return key.startsWith('$');
     }
-  }
+  };
+
   t.deepEqual(
     new newTreeData(data).run(),
     {}
