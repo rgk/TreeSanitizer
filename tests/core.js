@@ -170,3 +170,36 @@ test('Extending ignore.', (t) => {
 
   t.end();
 });
+
+test('String input returns undefined.', (t) => {
+  let data = "thisisastring";
+
+  t.deepEqual(
+    new TreeSanitizer(data).run(),
+    undefined
+  );
+
+  t.end();
+});
+
+test('Boolean input returns undefined.', (t) => {
+  let data = true;
+
+  t.deepEqual(
+    new TreeSanitizer(data).run(),
+    undefined
+  );
+
+  t.end();
+});
+
+test('Number input returns undefined.', (t) => {
+  let data = 13;
+
+  t.deepEqual(
+    new TreeSanitizer(data).run(),
+    undefined
+  );
+
+  t.end();
+});
