@@ -4,6 +4,7 @@
   "description": "A sanitizer for nested trees.",
   "main": "TreeSanitizer.js",
   "browser": "TreeSanitizer.js",
+  "type": "module",
   "repository": {
     "type": "git",
     "url": "https://github.com/rgk/TreeSanitizer.git"
