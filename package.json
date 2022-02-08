@@ -18,6 +18,6 @@
   "license": "BSD-3-Clause",
   "type": "module",
   "devDependencies": {
-    "tape": "^5.4.1"
+    "tape": "^5.5.0"
   }
 }
