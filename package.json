@@ -1,7 +1,7 @@
 {
   "name": "TreeSanitizer",
   "version": "1.0.0",
-  "description": "A sanitizer for nested trees.",
+  "description": "A class based sanitizer for nested trees.",
   "main": "TreeSanitizer.js",
   "browser": "TreeSanitizer.js",
   "type": "module",
@@ -16,8 +16,10 @@
   "author": "rgk",
   "homepage": "https://github.com/rgk/TreeSanitizer",
   "license": "BSD-3-Clause",
-  "type": "module",
+  "engines": {
+    "node": ">=14.0.0"
+  },
   "devDependencies": {
-    "tape": "^5.5.0"
+    "tape": "^5.5.1"
   }
 }
