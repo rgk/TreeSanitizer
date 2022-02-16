@@ -171,6 +171,30 @@ test('Extending ignore.', (t) => {
   t.end();
 });
 
+test('Extending options by removing ignore.', (t) => {
+  let data = {
+    a: {
+      _b: {
+        username: 'thisisausername',
+        password: 'thisisapassword'
+      }
+    }
+  };
+
+  class newTreeData extends TreeSanitizer {
+    options(key) {
+      return false;
+    }
+  };
+
+  t.deepEqual(
+    new newTreeData(data).run(),
+    {}
+  );
+
+  t.end();
+});
+
 test('String input returns undefined.', (t) => {
   let data = "thisisastring";
 
