@@ -6,8 +6,11 @@ export default class TreeSanitizer {
 
   run(data = this.original, newTree = {}, parents = []) {
     if (typeof data !== 'object') return;
+    let option = false;
     for (const [key, value] of Object.entries(data)) {
-      if (this.options(key, value)) continue;
+      option = this.options(key,value);
+      if (option === true) continue;
+      if (option !== false) value = option;
 
       if (typeof value === 'object') {
         newTree = this.run(value, newTree, [ ...parents, key ]);
@@ -48,7 +51,7 @@ export default class TreeSanitizer {
     return value;
   }
 
-  // Extend options to add or remove logic.
+  // Extend options to add or remove logic, can return value which will replace the current value.
   options(key, value) {
     if (this.ignore(key)) return true;
 
