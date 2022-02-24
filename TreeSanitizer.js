@@ -8,7 +8,7 @@ export default class TreeSanitizer {
     if (typeof data !== 'object') return;
     let option = false;
     for (const [key, value] of Object.entries(data)) {
-      option = this.options(key,value);
+      option = this.options(key, value);
       if (option === true) continue;
       if (option !== false) value = option;
 
@@ -17,9 +17,7 @@ export default class TreeSanitizer {
         continue;
       }
 
-      const newValue = this.filter(key, value);
-
-      let branch = { [key]: newValue };
+      let branch = { [key]: this.filter(key, value) };
       for (let i = parents.length - 1; i !== -1; i--) {
         branch = { [parents[i]]: branch };
       }
