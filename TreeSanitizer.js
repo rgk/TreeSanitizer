@@ -6,9 +6,9 @@ export default class TreeSanitizer {
 
   run(data = this.original, newTree = {}, parents = []) {
     if (typeof data !== 'object') return;
-    let option = false;
+
     for (const [key, value] of Object.entries(data)) {
-      option = this.options(key, value);
+      const option = this.options(key, value);
       if (option === true) continue;
       if (option !== false) value = option;
 
