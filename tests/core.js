@@ -1,5 +1,5 @@
 import test from 'tape';
-import TreeSanitizer from '../TreeSanitizer.js';
+import TreeSanitizer from '../index.js';
 
 test('A deep nested tree can be sanitized.', (t) => {
   let data = {

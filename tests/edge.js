@@ -1,5 +1,5 @@
 import test from 'tape';
-import TreeSanitizer from '../TreeSanitizer.js';
+import TreeSanitizer from '../index.js';
 
 test('Keys that are filter values should not be filtered.', (t) => {
   let data = {
