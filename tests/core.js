@@ -183,7 +183,7 @@ test('Extending options by removing ignore.', (t) => {
 
   class newTreeData extends TreeSanitizer {
     options(key) {
-      return false;
+      return true;
     }
   };
 
