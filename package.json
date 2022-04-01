@@ -2,8 +2,6 @@
   "name": "TreeSanitizer",
   "version": "1.0.0",
   "description": "A class based sanitizer for nested trees.",
-  "main": "TreeSanitizer.js",
-  "browser": "TreeSanitizer.js",
   "type": "module",
   "repository": {
     "type": "git",
