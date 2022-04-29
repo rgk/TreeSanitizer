@@ -219,6 +219,32 @@ test('Extending options by adding logic.', (t) => {
   t.end();
 });
 
+test('Mixin options by adding logic.', (t) => {
+  let data = {
+    a: {
+      b_: {
+        username: 'thisisausername',
+        password: 'thisisapassword'
+      }
+    }
+  };
+
+  const mixin = {
+    options(key) {
+      return key.endsWith('_');
+    }
+  };
+
+  Object.assign(TreeSanitizer.prototype, mixin);
+
+  t.deepEqual(
+    new TreeSanitizer(data).run(),
+    {}
+  );
+
+  t.end();
+});
+
 test('String input returns undefined.', (t) => {
   let data = "thisisastring";
 
