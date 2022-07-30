@@ -18,7 +18,7 @@ export default class TreeSanitizer {
       }
 
       let branch = { [key]: this.filter(key, value) };
-      for (let i = parents.length - 1; i !== -1; i--) {
+      for (let i = parents.length - 1; ~i; i--) {
         branch = { [parents[i]]: branch };
       }
 
