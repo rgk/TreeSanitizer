@@ -1,4 +1,6 @@
 export default class TreeSanitizer {
+  original = {};
+  sanitized = {};
   constructor(tree) {
     this.original = tree;
     this.sanitized = {};
