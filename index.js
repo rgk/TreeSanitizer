@@ -1,6 +1,7 @@
 export default class TreeSanitizer {
   original = {};
   sanitized = {};
+
   constructor(tree) {
     this.original = tree;
     this.sanitized = {};
@@ -24,7 +25,7 @@ export default class TreeSanitizer {
         branch = { [parents[i]]: branch };
       }
 
-      newTree = this.mergeTree(newTree, branch);
+      newTree = this.#mergeTree(newTree, branch);
     }
 
     if (!parents.length) {
@@ -58,25 +59,25 @@ export default class TreeSanitizer {
     return false;
   }
 
-  mergeProperties(mainTree, branchTree, key) {
+  #mergeProperties(mainTree, branchTree, key) {
     if (branchTree === undefined || branchTree[key] === undefined) {
       return mainTree[key];
     } else if (typeof mainTree[key] === "object") {
-      return this.mergeTree(branchTree[key], mainTree[key]);
+      return this.#mergeTree(branchTree[key], mainTree[key]);
     }
 
     return branchTree[key];
   }
 
-  mergeTree(mainTree, branchTree) {
+  #mergeTree(mainTree, branchTree) {
     const mergedTree = {};
 
     for (const key of Object.keys(mainTree)) {
-      mergedTree[key] = this.mergeProperties(mainTree, branchTree, key);
+      mergedTree[key] = this.#mergeProperties(mainTree, branchTree, key);
     }
 
     for (const key of Object.keys(branchTree)) {
-      mergedTree[key] = this.mergeProperties(branchTree, mainTree, key);
+      mergedTree[key] = this.#mergeProperties(branchTree, mainTree, key);
     }
 
     return mergedTree;
