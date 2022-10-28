@@ -4,7 +4,6 @@ export default class TreeSanitizer {
 
   constructor(tree) {
     this.original = tree;
-    this.sanitized = {};
   }
 
   run(data = this.original, newTree = {}, parents = []) {
@@ -69,9 +68,7 @@ export default class TreeSanitizer {
     return branchTree[key];
   }
 
-  #mergeTree(mainTree, branchTree) {
-    const mergedTree = {};
-
+  #mergeTree(mainTree, branchTree, mergedTree = {}) {
     for (const key of Object.keys(mainTree)) {
       mergedTree[key] = this.#mergeProperties(mainTree, branchTree, key);
     }
